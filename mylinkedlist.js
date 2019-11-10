@@ -103,6 +103,7 @@ class LinkedList {
         }
         //find the node with the key
         let currNode = this.head;
+        let previousNode = this.head;
         for (let i = 0; i <= insertAt; i++) {
             previousNode = currNode
             currNode = currNode.next
@@ -237,4 +238,29 @@ function reverseListAgain(list) {
         nextAgain = nextAgain.next
     }
     list.head = nextNode
+}
+
+function middleOfAList(list) {
+    if (!list.head) {
+        return null;
+    }
+    let currentNode = list.head
+    let count = 0
+    while (currentNode !== null) {
+        let nextStep = currentNode.next.next
+        currentNode = nextStep
+        count++
+    }
+    if (currentNode === null) {
+        console.log('No midpoint item exists within an even number of items')
+        return null;
+    }
+    let midIndex = count / 2
+    let currNode = list.head;
+    let prevNode = list.head;
+    for (let i = 0; i < midIndex; i++) {
+        prevNode = currNode
+        currNode = currNode.next
+    }
+    return prevNode;
 }

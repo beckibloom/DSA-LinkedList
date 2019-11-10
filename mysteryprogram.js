@@ -1,5 +1,7 @@
 //This function removes duplicates from the linked list
 
+//The complexity of this algorithm is O(n) because each while loop will need to be completed once per n number of items in the list
+
 function WhatDoesThisProgramDo(lst) {
     //establishes first item of list
     let current = lst.head;

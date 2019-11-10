@@ -199,3 +199,42 @@ function findLast() {
     }
     return previousNode;
 }
+
+//BONUS: Solve this problem using both recursive and iterative algorithms.
+function reverseList(list) {
+    if (!list.head) {
+        return null;
+    }
+
+    let currentNode = list.head
+    let nodeArr = []
+    while (currentNode !== null) {
+        nodeArr.push(currentNode)
+        currentNode = currentNode.next
+    }
+    list.head = nodeArr[nodeArr.length]
+    currentNode = list.head
+    for (let i = 0; i < nodeArr.length; i++) {
+        currentNode.next = nodeArr[nodeArr.length - i]
+        currentNode = currentNode.next
+    }
+    return list;
+}
+
+//second iteration of reversing function!
+function reverseListAgain(list) {
+    if (!list.head) {
+        return null;
+    }
+    let current = this.head
+    let nextNode = current.next
+    current.next = null
+    let nextAgain = nextNode.next
+    while (nextAgain !== null) {
+        nextNode.next = current
+        current = nextNode
+        nextNode = nextAgain
+        nextAgain = nextAgain.next
+    }
+    list.head = nextNode
+}

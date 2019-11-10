@@ -58,4 +58,61 @@ class LinkedList {
         }
         previousNode.next = currNode.next
     }
+
+    insertBefore(item, insertAt) {
+        //if list is empty, return null
+        if (!this.head) {
+            return null;
+        }
+        //find the node with the key
+        let currNode = this.head;
+        let previousNode = this.head;
+        while ((currNode !== null) && (currNode.value !== insertAt)) {
+            previousNode = currNode
+            currNode = currNode.next
+        }
+        if (currNode === null) {
+            console.log('Key not found')
+            return null;
+        }
+        previousNode.next = new _Node(item, currNode)
+    }
+
+    insertAfter(item, insertAt) {
+        //if list is empty, return null
+        if (!this.head) {
+            return null;
+        }
+        //find the node with the key
+        let currNode = this.head;
+        while ((currNode !== null) && (currNode.value !== insertAt)) {
+            currNode = currNode.next
+        }
+        if (currNode === null) {
+            console.log('Key not found')
+            return null;
+        }
+        nextNode = currNode.next
+        currNode.next = new _Node(item, nextNode)
+    }
+
+    insertAt(item, insertAt) {
+        //if list is empty, return null
+        if (!this.head) {
+            return null;
+        }
+        //find the node with the key
+        let currNode = this.head;
+        for (let i = 0; i <= insertAt; i++) {
+            previousNode = currNode
+            currNode = currNode.next
+        }
+        if (currNode === null) {
+            console.log('Key not found')
+            return null;
+        }
+        previousNode.next = new _Node(item, currNode)
+    }
 }
+
+module.exports = { LinkedList }
